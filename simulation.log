@@ -1,0 +1,60 @@
+# =============================================================================
+# AegisAgent — Simulation Log File
+# Scenario: Compound Attack on a fictional e-commerce web application
+# Server: web01.aegis-demo.local | 2026-10-31
+# Format: Apache/Nginx Combined Log Format
+# =============================================================================
+
+
+203.0.113.45 - - [31/Oct/2026:02:10:01 +0000] "POST /admin/login HTTP/1.1" 401 512 "-" "python-requests/2.31.0"
+203.0.113.45 - - [31/Oct/2026:02:10:03 +0000] "POST /admin/login HTTP/1.1" 401 512 "-" "python-requests/2.31.0"
+203.0.113.45 - - [31/Oct/2026:02:10:05 +0000] "POST /admin/login HTTP/1.1" 401 512 "-" "python-requests/2.31.0"
+203.0.113.45 - - [31/Oct/2026:02:10:07 +0000] "POST /admin/login HTTP/1.1" 401 512 "-" "python-requests/2.31.0"
+203.0.113.45 - - [31/Oct/2026:02:10:09 +0000] "POST /admin/login HTTP/1.1" 401 512 "-" "python-requests/2.31.0"
+203.0.113.45 - - [31/Oct/2026:02:10:11 +0000] "POST /admin/login HTTP/1.1" 401 512 "-" "python-requests/2.31.0"
+203.0.113.45 - - [31/Oct/2026:02:10:13 +0000] "POST /admin/login HTTP/1.1" 401 512 "-" "python-requests/2.31.0"
+203.0.113.45 - - [31/Oct/2026:02:10:15 +0000] "POST /admin/login HTTP/1.1" 401 512 "-" "python-requests/2.31.0"
+203.0.113.45 - - [31/Oct/2026:02:10:17 +0000] "POST /admin/login HTTP/1.1" 200 4096 "-" "python-requests/2.31.0"
+
+198.51.100.77 - - [31/Oct/2026:02:15:01 +0000] "GET /search?q=shoes HTTP/1.1" 200 8192 "-" "Mozilla/5.0"
+198.51.100.77 - - [31/Oct/2026:02:15:04 +0000] "GET /search?q=shoes'+OR+'1'='1 HTTP/1.1" 500 1024 "-" "sqlmap/1.7.8"
+198.51.100.77 - - [31/Oct/2026:02:15:06 +0000] "GET /search?q=1+UNION+SELECT+null,username,password+FROM+users-- HTTP/1.1" 500 1024 "-" "sqlmap/1.7.8"
+198.51.100.77 - - [31/Oct/2026:02:15:08 +0000] "GET /product?id=1;DROP+TABLE+orders-- HTTP/1.1" 500 512 "-" "sqlmap/1.7.8"
+198.51.100.77 - - [31/Oct/2026:02:15:10 +0000] "GET /product?id=1+AND+SLEEP(5)-- HTTP/1.1" 500 512 "-" "sqlmap/1.7.8"
+198.51.100.77 - - [31/Oct/2026:02:15:12 +0000] "GET /product?id=1+AND+1=CONVERT(int,@@version)-- HTTP/1.1" 500 512 "-" "sqlmap/1.7.8"
+
+172.16.0.88 - - [31/Oct/2026:02:20:01 +0000] "GET /comment?text=hello HTTP/1.1" 200 2048 "-" "Mozilla/5.0"
+172.16.0.88 - - [31/Oct/2026:02:20:03 +0000] "GET /comment?text=<script>alert('XSS')</script> HTTP/1.1" 400 256 "-" "Mozilla/5.0"
+172.16.0.88 - - [31/Oct/2026:02:20:05 +0000] "GET /profile?name=<img+src=x+onerror=alert(1)> HTTP/1.1" 400 256 "-" "Mozilla/5.0"
+172.16.0.88 - - [31/Oct/2026:02:20:07 +0000] "POST /feedback HTTP/1.1" 400 256 "-" "Mozilla/5.0"
+172.16.0.88 - - [31/Oct/2026:02:20:09 +0000] "GET /search?q=<svg/onload=alert(document.cookie)> HTTP/1.1" 400 256 "-" "Mozilla/5.0"
+
+10.10.10.99 - - [31/Oct/2026:02:25:01 +0000] "GET /static/logo.png HTTP/1.1" 200 4096 "-" "curl/8.1.2"
+10.10.10.99 - - [31/Oct/2026:02:25:03 +0000] "GET /download?file=../../../../etc/passwd HTTP/1.1" 403 256 "-" "curl/8.1.2"
+10.10.10.99 - - [31/Oct/2026:02:25:05 +0000] "GET /download?file=..%2F..%2F..%2Fetc%2Fshadow HTTP/1.1" 403 256 "-" "curl/8.1.2"
+10.10.10.99 - - [31/Oct/2026:02:25:07 +0000] "GET /../../../proc/self/environ HTTP/1.1" 403 256 "-" "curl/8.1.2"
+10.10.10.99 - - [31/Oct/2026:02:25:09 +0000] "GET /page?include=../../../../var/log/auth.log HTTP/1.1" 500 512 "-" "curl/8.1.2"
+
+192.0.2.200 - - [31/Oct/2026:02:30:01 +0000] "GET /api/v1/users HTTP/1.1" 200 16384 "-" "PostmanRuntime/7.36"
+192.0.2.200 - - [31/Oct/2026:02:30:03 +0000] "DELETE /api/v1/users/1 HTTP/1.1" 403 128 "-" "PostmanRuntime/7.36"
+192.0.2.200 - - [31/Oct/2026:02:30:05 +0000] "DELETE /api/v1/users/2 HTTP/1.1" 403 128 "-" "PostmanRuntime/7.36"
+192.0.2.200 - - [31/Oct/2026:02:30:07 +0000] "PUT /api/v1/users/1 HTTP/1.1" 403 128 "-" "PostmanRuntime/7.36"
+192.0.2.200 - - [31/Oct/2026:02:30:09 +0000] "TRACE / HTTP/1.1" 405 64 "-" "PostmanRuntime/7.36"
+192.0.2.200 - - [31/Oct/2026:02:30:11 +0000] "OPTIONS / HTTP/1.1" 200 0 "-" "PostmanRuntime/7.36"
+
+45.33.32.156 - - [31/Oct/2026:02:35:01 +0000] "GET /robots.txt HTTP/1.1" 200 128 "-" "Nikto/2.1.6"
+45.33.32.156 - - [31/Oct/2026:02:35:02 +0000] "GET /.git/config HTTP/1.1" 404 256 "-" "Nikto/2.1.6"
+45.33.32.156 - - [31/Oct/2026:02:35:03 +0000] "GET /wp-admin/install.php HTTP/1.1" 404 256 "-" "Nikto/2.1.6"
+45.33.32.156 - - [31/Oct/2026:02:35:04 +0000] "GET /phpmyadmin/ HTTP/1.1" 404 256 "-" "Nikto/2.1.6"
+45.33.32.156 - - [31/Oct/2026:02:35:05 +0000] "GET /admin/config.php HTTP/1.1" 403 256 "-" "Nikto/2.1.6"
+45.33.32.156 - - [31/Oct/2026:02:35:06 +0000] "GET /backup.zip HTTP/1.1" 404 256 "-" "Nikto/2.1.6"
+45.33.32.156 - - [31/Oct/2026:02:35:07 +0000] "GET /server-status HTTP/1.1" 403 256 "-" "Nikto/2.1.6"
+45.33.32.156 - - [31/Oct/2026:02:35:08 +0000] "GET /etc/passwd HTTP/1.1" 404 256 "-" "Nikto/2.1.6"
+45.33.32.156 - - [31/Oct/2026:02:35:09 +0000] "GET /config.yml HTTP/1.1" 404 256 "-" "Nikto/2.1.6"
+45.33.32.156 - - [31/Oct/2026:02:35:10 +0000] "GET /.env HTTP/1.1" 403 256 "-" "Nikto/2.1.6"
+
+10.0.0.1 - - [31/Oct/2026:02:40:00 +0000] "GET /index.html HTTP/1.1" 200 8192 "-" "Mozilla/5.0"
+10.0.0.2 - - [31/Oct/2026:02:40:01 +0000] "GET /products HTTP/1.1" 200 16384 "-" "Mozilla/5.0"
+10.0.0.3 - - [31/Oct/2026:02:40:02 +0000] "GET /about HTTP/1.1" 200 4096 "-" "Mozilla/5.0"
+10.0.0.4 - - [31/Oct/2026:02:40:03 +0000] "GET /contact HTTP/1.1" 200 3072 "-" "Mozilla/5.0"
+10.0.0.5 - - [31/Oct/2026:02:40:04 +0000] "GET /cart HTTP/1.1" 200 6144 "-" "Mozilla/5.0"

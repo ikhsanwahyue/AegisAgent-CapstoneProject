@@ -1,4 +1,5 @@
-crewai==0.80.0
-langchain-google-genai==2.0.7
-streamlit==1.40.2
-python-dotenv==1.0.1
+setuptools>=68.0
+langchain-google-genai>=2.0.0
+langchain-core>=0.3.0
+streamlit>=1.40.0
+python-dotenv>=1.0.0
